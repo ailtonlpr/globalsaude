@@ -7,7 +7,10 @@
     <?= $this->Html->meta('icon', 'favicon.png', ['type'=>'image/png']); ?>
 
     <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->css('bootstrap-theme.min.css') ?>
     <?= $this->Html->css('/font-awesome/css/font-awesome.min.css') ?>
+    <?= $this->Html->css('easyWizard.css') ?>
+    <?= $this->Html->css('select2.min.css') ?>
     <?= $this->Html->css('nivo-lightbox.css') ?>
     <?= $this->Html->css('nivo-lightbox-theme/default/default.css') ?>
     <?= $this->Html->css('owl.carousel.css',['media'=>'screen']) ?>
@@ -17,6 +20,9 @@
     <?= $this->Html->css('/bodybg/bg1.css',['id'=>'bodybg']) ?>
     <?= $this->Html->css('/color/default.css',['id'=>'t-colors']) ?>
     <?= $this->Html->css('bootstrap-clockpicker.min.css') ?>
+    <?= $this->Html->css('bootstrap-datetimepicker.css') ?>
+    <?= $this->Html->css('alertify.core.css') ?>
+    <?= $this->Html->css('alertify.default.css',['id'=>'toggleCSS']) ?>
 
     <style type="text/css">
         .boxAviso { position: relative; z-index: 100000; }
@@ -62,11 +68,56 @@
           #cl-preco-carrosel { margin-top: 5px; }
         }
       </style>
+      <style type="text/css">
+        input { text-transform:uppercase !important; }
+        .btnAdd {
+            border-radius: 10px 0px 0px 10px;
+            margin-top: -20px;
+            position: absolute;
+            right: 0;
+            z-index: 10000;
+        }
+        .btnDel {
+            border-radius: 10px 0px 0px 10px;
+            display: none;
+            margin-top: 12px;
+            position: absolute;
+            right: 0;
+            z-index: 10000;
+        }
+        .lineDiv {
+            display: block;
+            content: "";
+            clear: both;
+          }
+        }
+        .alertify-log-custom {
+            background: blue;
+        }
+        .linediv { display: none; }
+        hr {
+          border-top: 1px dashed #fff;
+          border-bottom: 1px dashed #000;
+          color: #fff;
+          background-color: #fff;
+          height: 8px;
+        }
+        /*
+        input:invalid { border: 1px solid red; }
+        input:valid { border: 1px solid green; }
+        */
+        .invalid { border: 1px solid red; }
+        .txtred { color: red }
+    </style>
 
     <?= $this->Html->script('jquery.min.js') ?>
     <?= $this->Html->script('bootstrap.min.js') ?>
     <?= $this->Html->script('jquery.mask.min.js') ?>
     <?= $this->Html->script('bootstrap-clockpicker.min.js') ?>
+    <?= $this->Html->script('select2.min.js') ?>
+    <?= $this->Html->script('moment-with-locales.js') ?>
+    <?= $this->Html->script('bootstrap-datetimepicker.js') ?>
+    <?= $this->Html->script('alertify.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
