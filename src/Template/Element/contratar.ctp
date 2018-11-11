@@ -41,6 +41,8 @@
       background-color: #e0e0e0;
   }
 
+  #myModalProposta div.modal-footer.wizard-buttons .btn.btn-primary.wizard-button-finish { color: #FFF !important; }
+
 </style>
 <div class="modal fade" id="myModalProposta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
