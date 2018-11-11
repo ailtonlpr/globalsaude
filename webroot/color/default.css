@@ -1,0 +1,120 @@
+/*
+#1 color = #277EB6;
+#2 color = #296FA7;
+*/
+
+a:hover,
+a:focus {
+    color: #277EB6;
+}
+
+.circled {
+	background: #277EB6;
+}
+
+.con1 > div, .con2 > div, .con3 > div { 
+	background-color: #277EB6;
+}
+
+.scrollup:hover {
+	background: #277EB6;
+}
+
+
+/* service */
+
+.service-icon span {
+	color: #277EB6;
+}
+
+
+
+/* button */
+.btn-skin {
+  background-color: #277EB6;
+  border-color: #277EB6;
+}
+
+
+/* top */
+.top-area {
+	background: #296FA7;
+}
+
+/* menu */
+
+.navbar-custom ul.nav ul.dropdown-menu li a:hover {
+	color: #296FA7;
+}
+.navbar-custom.top-nav-collapse .nav li a:hover,
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li.active a,.navbar-custom.top-nav-collapse .nav li.active a  {
+    color: #296FA7;
+}
+
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span {
+    background-color: #277EB6;
+}
+
+
+.bg-skin {
+	background: #277EB6;
+}
+
+.highlight-color {
+	background-color: #277EB6;
+}
+.color {
+	color: #277EB6;
+}
+
+/* pricing box  */
+.pricing-content.featured h2,.pricing-content.featured .price-bottom {
+	background-color:#296FA7;
+}
+.pricing-content.featured h3 {
+	background:#277EB6;
+}
+
+
+
+/* team */
+.cbp-l-grid-team-name {
+    color: #296FA7;
+}
+
+.cbp-l-filters-button .cbp-filter-counter {
+	background-color: #277EB6;
+}
+
+.cbp-l-filters-alignLeft .cbp-filter-item-active {
+    /* @editable properties */
+    background-color: #277EB6;
+    border:1px solid #277EB6;
+}
+
+.cbp-l-filters-dropdownWrap {
+    background: #277EB6;
+}
+.cbp-l-filters-button .cbp-filter-item.cbp-filter-item-active {
+    /* @editable properties */
+    background-color: #277EB6;
+    border-color: #277EB6;
+}
+.cbp-l-caption-buttonLeft,
+.cbp-l-caption-buttonRight {
+    /* @editable properties */
+    background-color: #277EB6;
+}
+
+.cbp-l-caption-buttonLeft:hover,
+.cbp-l-caption-buttonRight:hover {
+    /* @editable properties */
+    background-color: #296FA7;
+}
+
+.form-control:focus {
+  border-color: #296FA7;
+}
