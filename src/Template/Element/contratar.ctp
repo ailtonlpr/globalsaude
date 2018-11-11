@@ -60,7 +60,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Nome Completo:</label>
                 <div class='input-group'>
-                  <input name="nome" type="text" maxlength="50" class="form-control nome" title="O nome é obrigatório" />
+                  <?= $this->Form->text('S_ADESAO_S_NOME',['class'=>'form-control nome','maxlength'=>'50','placeholder'=>'Nome Completo']); ?>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user"></span>
                   </span>
@@ -71,7 +71,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Data de Nascimento:</label>
                 <div class='input-group date'>
-                  <input name="dataNasc" type='text' maxlength="8" class="form-control dateNasc" title="Data de Nascimento é obrigatório" />
+                  <?= $this->Form->text('S_ADESAO_D_DATANASCIMENTO',['class'=>'form-control dateNasc','maxlength'=>'8']); ?>
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -83,7 +83,7 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Sexo:</label>
-                <select required name='genero' class="sel sexo" title="O Sexo é obrigatório">
+                <select required name='S_ADESAO_S_SEXO' class="sel sexo" title="O Sexo é obrigatório">
                   <option value=""></option>
                     <option value="1">Feminino</option>
                     <option value="2">Masculino</option>
@@ -94,7 +94,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">CPF:</label>
                 <div class='input-group'>
-                  <input name="cpf" type='text' class="form-control cpf" title="O CPF é obrigatório" />
+                  <input name="S_ADESAO_I_CPF" type='text' class="form-control cpf"  />
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-credit-card"></span>
                   </span>
@@ -105,7 +105,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">RG:</label>
                 <div class='input-group'>
-                  <input name="rg" type='text' maxlength="12" class="form-control rg" title="O RG é obrigatório" />
+                  <input name="S_ADESAO_S_RG" type='text' maxlength="12" class="form-control rg" title="O RG é obrigatório" />
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-credit-card"></span>
                   </span>
@@ -115,8 +115,8 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Orgão Emissor:</label>
-                <div class='input-group date'>
-                  <input name="orgemissor" type='text' maxlength="6" class="form-control org"  title="O Orgão Emissor é obrigatório" />
+                <div class='input-group'>
+                  <input name="S_ADESAO_S_ORGAO_EMISSOR" type='text' maxlength="6" class="form-control org"  title="O Orgão Emissor é obrigatório" />
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-star"></span>
                   </span>
@@ -129,7 +129,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">PIS/PASEP:</label>
                 <div class='input-group'>
-                  <input type='text' class="form-control pis" />
+                  <input name="S_ADESAO_I_PIS_PASESP" type='text' class="form-control pis" />
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-credit-card"></span>
                   </span>
@@ -140,7 +140,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Cartão Nacional de Saúde:</label>
                 <div class='input-group'>
-                  <input type='text' class="form-control sus" />
+                  <input name="S_ADESAO_I_CNS" type='text' class="form-control sus" />
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-credit-card"></span>
                   </span>
@@ -150,7 +150,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Estado Civil:</label>
-                <select name='estadocivil' class="sel2 estadocivil">
+                <select name='S_ADESAO_S_ESTADOCIVIL' class="sel2 estadocivil">
                   <option value="">&nbsp;</option>
                   <option value="1">Casado</option>
                   <option value="2">Divorciado</option>
@@ -166,7 +166,7 @@
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Nome da Mãe sem abreviaturas:</label>
                 <div class='input-group'>
-                  <input type='text' maxlength="50" class="form-control nomemae" />
+                  <input name='S_ADESAO_S_NOME_MAE' type='text' maxlength="50" class="form-control nomemae" />
                   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user"></span>
                   </span>
@@ -439,27 +439,7 @@
             </div>
           </div>
         </div>
-              </div>
-      <div class="wizard-step">
-        <h3>Forma de Pagamento</h3>
-        <div class="modal-body">
-          <div class='row'>
-            <div class="col-md-12">
-              <div class='table-responsive'>
-                <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
-                <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
-                <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                <input type="hidden" name="code" value="73AB01BE5C5C7AA004FEBFA8828B9E02" />
-                <input type="hidden" name="iot" value="button" />
-                <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/99x61-pagar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
-                </form>
-                <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
-                <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
-              </div>
-            </div>
-          </div>
-        </div>
-              </div>
+      </div>
     </div>
             <div class="modal-footer wizard-buttons">
                 <!-- The wizard button will be inserted here. -->
@@ -515,26 +495,27 @@
       listagem(".sel");
       listagem(".sel2");
 
-            $("#myModalProposta").wizard({
-              
-          onfinish:function(){
-                    console.log("Finalizando...");
-                }
-            });
+      $("#myModalProposta").wizard({
+        onfinish:function(){
+          alert('AKIII');
+          return false;
+          console.log("Finalizando...");
+        }
+      });
 
-            mascara('.cpf','000.000.000-00',true);
-            mascara('.cpfd','000.000.000-00',true);
-            mascara('.pis','000.00000-00-0',true);
-            mascara('.rg','00.000-000-0',true);
-            mascara('.sus','00000000000.0000.0',true);
-            mascara('.susd','00000000000.0000.0',true);
-            mascara('.org','SSS-SS',true);
-            mascara('.cep','00000-000',true);
-            mascara('.telfixo','(00) 0000-0000',false);
-            mascara('.telcel','(00) 00000-0000',false);
-            mascara('.telcom','(00) 0000-0000',false);
-            mascara('.numdnvd','00-00000000-0',false);
-            mascara('.numero','0000000000',false);
+      mascara('.cpf','000.000.000-00',true);
+      mascara('.cpfd','000.000.000-00',true);
+      mascara('.pis','000.00000-00-0',true);
+      mascara('.rg','00.000-000-0',true);
+      mascara('.sus','00000000000.0000.0',true);
+      mascara('.susd','00000000000.0000.0',true);
+      mascara('.org','SSS-SS',true);
+      mascara('.cep','00000-000',true);
+      mascara('.telfixo','(00) 0000-0000',false);
+      mascara('.telcel','(00) 00000-0000',false);
+      mascara('.telcom','(00) 0000-0000',false);
+      mascara('.numdnvd','00-00000000-0',false);
+      mascara('.numero','0000000000',false);
     
       function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.

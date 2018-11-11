@@ -17,10 +17,13 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
             <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="/">
-            <?= $this->Html->image('logo_simpec_sp.png',['height'=>40]) ?>
-            <?= $this->Html->image('logo+caixa+seguradora.png',['height'=>40]) ?>
-        </a>
+        <?= $this->Html->link(
+          $this->Html->image('logo_simpec_sp.png',['height'=>40]).
+          $this->Html->image('logo+caixa+seguradora.png',['height'=>40]),
+          ['controller'=>'paginas','action'=>'index'],
+          ['escape'=>false,'class'=>'navbar-brand']
+          ); 
+        ?>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -31,8 +34,6 @@
           <li><a href="#especialidades">Especialidades</a></li>
           <li><a href="#contratar">Contratar</a></li>
           <li><a href="#footer">Contatos</a></li>
-          <!-- li><a href="#" class="btnEntrar" data-toggle="modal" data-target="#entrarModal">Entrar</a></li -->
-          <!--li><a href="https://www.odontoutilis.com.br/ConnectOdontoWeb/connect-listRedeAtendimentoCaixa.action?publico=true" target="_blank" class="btnEntrar">Rede</a></li -->
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -59,7 +60,10 @@
                             <h2>Plano SIGMA</h2>
                             <h3>R$ 37<sup>,92</sup> <span>/ por mês</span></h3>
                             <div class="price-bottom">
-                              <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                              <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                             </div>
                           </div>
                         </div>
@@ -77,7 +81,10 @@
                   <h5 class="titDestCarr">O que é um Plano Odontológico?</h5>
                   <p>É um Plano que oferece atendimento aos clientes em uma ampla rede de dentistas credenciados. A Rosângela só leva o Maurinho para a clínica do dentista de confiança da família, que faz parte desta rede.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -90,7 +97,10 @@
                   <h5 class="titDestCarr">Porque ter um Plano Odontológico da Caixa Seguradora?</h5>
                   <p>Ele une os melhores serviços e uma ampla rede nacional de dentistas credênciados com mais de 23 mil opções de atendimento, com possibilidade de Reembolso. A família toda da Rosângela tem tudo isso por um valor acessível e com a solidez que a Caixa Seguradora oferece.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -103,7 +113,10 @@
                   <h5 class="titDestCarr">Qual produto está disponível?</h5>
                   <p>A Caixa Seguradora oferece um tipo de plano odontológico, o Odonto SIGMA. Ele pode ser transformado em SIGMA Familiar caso haja a necessidade de incluir dependentes.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>   
@@ -116,7 +129,10 @@
                   <h5 class="titDestCarr">O que o seguro cobre?</h5>
                   <p>Todas as coberturas odontológicas determinadas pela Agência Nacional de Saúde Suplementar (ANS) e outros 19 procedimentos adicionais. Rosângela, por exemplo, conta com atendimento de urgência, exames, procedimentos preventivos, restauração, tratamento de canal, cirurgia e outros.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -129,7 +145,10 @@
                   <h5 class="titDestCarr">Quem pode ser considerado meu dependente?</h5>
                   <p>Cônjuge ou companheiro (a), filhos (as), solteiros (as), adotivos menores de 40 anos ou inválidos em qualquer idade, enteados (as) e tutelados até 21 anos. Também são considerados dependentes do Seguro SIGMA Familiar avós, bisavós, netos, bisnetos, tios, sobrinhos e irmãos.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -142,7 +161,10 @@
                   <h5 class="titDestCarr">A partir de quando posso começar a usar o seguro?</h5>
                   <p>Maurinho já usou procedimentos de urgência e emergência após 24 horas. Para os demais procedimentos clínicos após 30 dias (para pagamento anual).</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -155,7 +177,10 @@
                   <h5 class="titDestCarr">Após a contratação do plano, existe um prazo de carência para inclusão de novos dependentes?</h5>
                   <p>Sim, caso sejam incluídos após a contratação do Plano Odontológico SIGMA. Os novos dependentes deverão cumprir o período de carência de 30 dias, caso o pagamento seja anual, e 60 dias se o pagamento for mensal.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div> 
@@ -168,7 +193,10 @@
                   <h5 class="titDestCarr">Como faço para obter mais informações sobre reembolso?</h5>
                   <p>O reembolso é compatível com o mercado. A tabela com os valores poderá ser encontrada na área logada do espaço “Sou Segurado” ou na Central de Relacionamento com o Cliente, com o orçamento do dentista em mãos e a descrição do procedimento que será realizado.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -181,7 +209,10 @@
                   <h5 class="titDestCarr">Quais são as clínicas e profissionais disponíveis?</h5>
                   <p>A família do Maurinho pode ser atendida em todo o Brasil. São milhares de profissionais e clínicas que oferecem os melhores serviços.</p>
 
-                  <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                  <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>  
@@ -194,7 +225,10 @@
                         <h2>Plano SIGMA</h2>
                         <h3>R$ 37<sup>,92</sup> <span>/ por pessoa</span></h3>
                         <div class="price-bottom">
-                          <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                          <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                         </div>
                       </div>
                     </div>
@@ -255,7 +289,11 @@
                   <li><span class="list subspace"><i class="fa fa-plus-square"></i> Prótese (novo rol mínimo)</span></li>
                   <li><span class="list titspace"><strong>Procedimentos do Rol mínimo da ANS</strong></span></li>
                 </ul>
-                <div class="btn-contrata"><a href="#" class="btn btn-skin btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar</a></div>
+                <div class="btn-contrata"><?= $this->Html->link(
+                    '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
+                    '#',
+                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?>
+                </div>
               </div>
             </div>
           </div>
