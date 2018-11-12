@@ -132,4 +132,36 @@ class PaginasController extends AppController
         // $this->set('tipo_usuarios',$tipo_usuarios);
         // $this->set('cotacao', $cotacao);
     }
+
+    public function enviardados()
+    {
+
+        $this->viewBuilder()->setLayout('ajax');
+        //$this->render(false);
+
+        if($this->request->is('post')){
+
+
+            $data['S_OUTRO_S_DADOS'] = json_encode($this->request->data);
+
+            $outros = TableRegistry::get('Outros');
+            $outro = $outros->newEntity();
+            $outro = $outros->patchEntity($outro, $data);   
+
+            if($outros->save($outro)){
+                $this->Flash->sucesso(
+                    __('Solicitação de cotação cadastrada com sucesso. Em breve faremos contato.'),
+                    ['key'=> 'cotarsucesso']
+                );
+                $this->set('sucessocotar','ok');
+            } else {
+                debug($outro->getErrors()); die;
+                $this->set('erros',$outro->getErrors());
+                $this->Flash->cotar(
+                    __('Não foi possível adicionar o registro'),
+                    ['key' => 'cotar']
+                );
+            }
+        }
+    }
 }
