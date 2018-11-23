@@ -23,6 +23,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
+use Cake\Validation\Validator;
 
 
 
@@ -52,6 +53,7 @@ class PaginasController extends AppController
     public function lista()
     {
     	$this->Cotacoes = TableRegistry::get('Cotacoes');
+
     	$cotacoes = $this->paginate($this->Cotacoes);
 
         $this->set(compact('cotacoes'));
@@ -163,5 +165,28 @@ class PaginasController extends AppController
                 );
             }
         }
+    }
+
+
+    public function pagamento()
+    {
+        $this->viewBuilder()->setLayout('defaultpagto');
+    }
+
+    public function getTempoVida($dt_nascimento = null){
+      
+      if(is_null($dt_nascimento)){
+        return false;
+      } 
+
+      $dt_nascimento = $dt_nascimento->format('Y-m-d');
+
+      $agora = date('Y-m-d');
+      $data_atual    = new \DateTime($agora);
+      $data_anterior = new \DateTime($dt_nascimento);
+      $calculo       = $data_atual->diff($data_anterior);
+
+      // return "{$calculo->y} ".__('anos').", {$calculo->m} ".__('meses')." ".__('e')." {$calculo->d} ".__('dias')."";
+      return "{$calculo->y} ".__('anos').", {$calculo->m} ".__('meses')." ".__('e')." {$calculo->d} ".__('dias')."";
     }
 }
