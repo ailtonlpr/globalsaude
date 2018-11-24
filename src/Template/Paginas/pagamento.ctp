@@ -1,10 +1,9 @@
 <?= $this->Html->css('https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',['id'=>'bootstrap-css']) ?>
 <?= $this->Html->css('stylepagto.css') ?>
 <?= $this->Html->script('script.js') ?>
+<?= $this->Html->script('jquery.priceformat.min.js') ?>
 <script type="text/javascript">
-    var price = parsetFloat(37,92);
-    var tot = price * 5;
-    console.log(tot);
+    var priceTot = '492.96';
     var arrResumoFatura = [];
     var arrResumoFatura2 = [];
 </script>
@@ -15,23 +14,18 @@
         <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step">
                 <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-                <!-- <p>Dados Pessoais</p> -->
             </div>
             <div class="stepwizard-step">
                 <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                <!-- <p>Contatos</p> -->
             </div>
             <div class="stepwizard-step">
                 <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                <!-- <p>Dependentes</p> -->
             </div>
             <div class="stepwizard-step">
                 <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                <!-- <p>Dependentes</p> -->
             </div>
             <div class="stepwizard-step">
                 <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
-                <!-- <p>Dependentes</p> -->
             </div>
         </div>
     </div>
@@ -174,14 +168,14 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">CEP:</label>
-                                    <input type="text" name='S_ADESAO_I_CEP' class="form-control cep" />
+                                    <input type="text" name='S_ADESAO_I_CEP' class="form-control cep" required="required" />
                                  </div>
                             </div>
                             <div class='col-md-8'>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Endereço Residencial:</label>
                                     <div class='input-group'>
-                                        <input id='rua' type="text" name='S_ADESAO_S_ENDERECO' class="form-control" />
+                                        <input id='rua' type="text" name='S_ADESAO_S_ENDERECO' class="form-control" required="required" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-map-marker"></span>
                                         </span>
@@ -191,7 +185,7 @@
                             <div class='col-md-2'>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Número:</label>
-                                    <input id='numero' type="text" name="S_ADESAO_I_NUMERO" maxlength="10" class="form-control" />
+                                    <input id='numero' type="text" name="S_ADESAO_I_NUMERO" maxlength="10" class="form-control" required="required" />
                                 </div>
                             </div>
                         </div>
@@ -205,13 +199,13 @@
                             <div class='col-md-4'>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Bairro:</label>
-                                    <input id='bairro' name="S_ADESAO_S_BAIRRO" type="text" class="form-control" />
+                                    <input id='bairro' name="S_ADESAO_S_BAIRRO" type="text" class="form-control" required="required" />
                                 </div>
                             </div>
                             <div class='col-md-5'>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Cidade:</label>
-                                    <input id='cidade' name="S_ADESAO_S_CIDADE" type="text" class="form-control" />
+                                    <input id='cidade' name="S_ADESAO_S_CIDADE" type="text" class="form-control" required="required" />
                                 </div>
                             </div>
                         </div>
@@ -220,7 +214,7 @@
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">UF:</label>
                                     <div class='input-group'>
-                                        <input id='uf' type="text" name="S_ADESAO_S_UF" class="form-control" />
+                                        <input id='uf' type="text" name="S_ADESAO_S_UF" class="form-control" required="required" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-star"></span>
                                         </span>
@@ -231,7 +225,7 @@
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Telefone Celular:</label>
                                     <div class='input-group'> 
-                                        <input type="text" name="S_ADESAO_I_TELEFONECELULAR" class="form-control telcel" />
+                                        <input type="text" name="S_ADESAO_I_TELEFONECELULAR" class="form-control telcel" required="required" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-phone"></span>
                                         </span>
@@ -287,6 +281,12 @@
                 <div class="col-md-12" id='basedep'>
                     <h3>Dependentes</h3>
                     <div class="lineDiv">&nbsp;</div>
+                    <div>
+                        <h4>Deseja incluir dependente?</h4>
+                        <br />
+                        <input type="radio" name="add_dpd" value="S"> SIM &nbsp;&nbsp; <input type="radio" name="add_dpd" value="N" checked> NÃO 
+                    </div>
+                    
                     <div class="modal-body dpd">
                         <button class="btn btn-info btn-sm btnAdd" title="Adicionar Dependente"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                         <button class="btn btn-danger btn-sm btnDel" title="Remover Dependente"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -307,7 +307,7 @@
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Data de Nascimento:</label>
                                     <div class='input-group date'>
-                                        <input id='el_dtnasc_1' type="text" name="datanascd[]" class="form-control dateNascd" placeholder="__/__/____" />
+                                        <input id='el_dtnasc_1' type="text" name="datanascd[]" class="form-control dateNascd" placeholder="__/__/____"  />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -408,34 +408,9 @@
                                                 <th scope="col">Valor em R$</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">Titular</th>
-                                                <td>31</td>
-                                                <td>R$ 37,92</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Dependente 1</th>
-                                                <td>20</td>
-                                                <td>R$ 37,92</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Dependente 2</th>
-                                                <td>22</td>
-                                                <td>R$ 37,92</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Dependente 3</th>
-                                                <td>25</td>
-                                                <td>R$ 37,92</td>
-                                            </tr>
+                                        <tbody class="corpo">                                        
                                         </tbody>
-                                        <tfooter>
-                                            <tr>
-                                                <th colspan='2' scope="row" style='text-align:right'>Total</th>
-                                                <td>R$ 151,68</td>
-                                            </tr>
-                                        </tfooter>
+                                        <tfoot></tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -542,6 +517,15 @@
 
         $('#btnDPF').click(function(){
             arrResumoFatura2 = [];
+
+            $("#step-4 table tbody.corpo").map(function(){
+                $(this).find('tr').remove();
+            });
+
+            $('#step-4 table tfoot').map(function(){
+                $(this).find('tr').remove();
+            });
+
             $("#basedep .modal-body").map(function(){
                 arrResumoFatura2.push(
                     new Array(
@@ -552,6 +536,48 @@
                 );
             });
             console.log(arrResumoFatura2);
+
+            var tg = '';
+            tg  = '<tr>';
+            tg += '<td>'+arrResumoFatura[0].toUpperCase()+'</td>';
+            tg += '<td>'+arrResumoFatura[1],new Date()+'</td>';
+            tg += '<td> R$ '+priceTot+'</td>';
+            tg += '</tr>';
+            $('#step-4 table tbody.corpo').append(tg);
+
+            totDep = arrResumoFatura2.length;
+
+            console.log(totDep);
+            
+            for(i=0;i<totDep; i++)
+            {
+                var tag = '';
+                tag  = '<tr>';
+                tag += '<td>'+arrResumoFatura2[i][0].toUpperCase()+'</td>';
+                tag += '<td>'+idade(arrResumoFatura2[i][1],new Date())+'</td>';
+                tag += '<td class="preco">'+priceTot+'</td>';
+                tag += '</tr>';
+                $('#step-4 table tbody.corpo tr:last').after(tag);
+            }
+
+            tagf  = '';
+            tagf += '<tr>';
+            tagf += '<th colspan="2" scope="row" style="text-align:right">Total</th>';
+            tagf += '<td id="totF"></td>';
+            tagf += '</tr>';
+
+            $('#step-4 table tfoot').append(tagf);
+
+            var vlcalc = '';
+            vlcalc = ( priceTot * (totDep+1) );
+
+            $('#totF').html('').append( vlcalc.toFixed(2) );
+
+            $('.preco, #totF').priceFormat({
+                prefix: 'R$ ',
+                centsSeparator: ',',
+                thousandsSeparator: '.'
+            });
         });
         
         // console.log(arrResumoFatura);
@@ -573,7 +599,6 @@
             s_ant_3 = $(obj).find('input[name="datanascd[]"]').attr('id');
             $('#'+s_ant_3).unmask();
             
-
             copia = obj.clone(true,true);
 
             // Limpando o elemento
@@ -659,6 +684,28 @@
             $('#basedep .modal-body:last input:first').focus();
         });
 
+        $('input[name="add_dpd"]').click(function(){
+            if($(this).val() == 'S')
+            {
+                $('.dpd').show();
+                $("input[name='nomed[]']").attr('required','required');
+                $("input[name='datanascd[]']").attr('required','required');
+                $("input[name='sexod[]']").attr('required','required');
+                $("input[name='estadocivild[]']").attr('required','required');
+                $("input[name='grauparentescod[]']").attr('required','required');
+                $("input[name='nomemaed[]']").attr('required','required');               
+            } 
+            else if ($(this).val() == 'N'){
+                $("input[name='nomed[]']").removeAttr('required');
+                $("input[name='datanascd[]']").removeAttr('required');
+                $("input[name='sexod[]']").removeAttr('required');
+                $("input[name='estadocivild[]']").removeAttr('required');
+                $("input[name='grauparentescod[]']").removeAttr('required');
+                $("input[name='nomemaed[]']").removeAttr('required'); 
+                $('.dpd').hide();
+            }
+        });
+
         // calendario('.dateNasc');
         // calendario('.dateNascd');
         listagem(".sel");
@@ -688,8 +735,7 @@
             $("#uf").val("");
         }
 
-
-        $(".ccep").blur(function() {
+        $(".cep").blur(function() {
             //Nova variável "cep" somente com dígitos.
             var cep = $(this).val().replace(/\D/g, '');
 
@@ -746,6 +792,9 @@
     });
     </script>
     <style type="text/css">
+
+        .dpd { display: none; }
+
         .has-error span.select2-selection__rendered { 
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
             border: 1px solid #a94442;

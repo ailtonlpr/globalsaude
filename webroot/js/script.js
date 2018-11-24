@@ -47,7 +47,7 @@ $(document).ready(function () {
             }
         }
 
-       // if (isValid)
+        if (isValid)
             nextStepWizard.removeAttr('disabled').trigger('click');
     });
 

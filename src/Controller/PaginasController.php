@@ -173,6 +173,11 @@ class PaginasController extends AppController
         $this->viewBuilder()->setLayout('defaultpagto');
     }
 
+    public function teste()
+    {
+        $this->viewBuilder()->setLayout('defaultpagto');
+    }
+
     public function getTempoVida($dt_nascimento = null){
       
       if(is_null($dt_nascimento)){
