@@ -2,6 +2,9 @@
 <?= $this->Html->css('stylepagto.css') ?>
 <?= $this->Html->script('script.js') ?>
 <script type="text/javascript">
+    var price = parsetFloat(37,92);
+    var tot = price * 5;
+    console.log(tot);
     var arrResumoFatura = [];
     var arrResumoFatura2 = [];
 </script>
@@ -54,7 +57,7 @@
                               <div class="form-group">
                                 <label for="message-text" class="col-form-label">Data de Nascimento:</label>
                                 <div class='input-group date'>
-                                  <?= $this->Form->text('S_ADESAO_D_DATANASCIMENTO',['class'=>'form-control dateNasc','maxlength'=>'8','id'=>'d_datanasc','required'=>'required']); ?>
+                                  <?= $this->Form->text('S_ADESAO_D_DATANASCIMENTO',['class'=>'form-control dateNasc','maxlength'=>'8','id'=>'d_datanasc','required'=>'required','placeholder'=>'__/__/____']); ?>
                                   <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                   </span>
@@ -530,20 +533,29 @@
     $(document).on("ready", function(){
 
         $('#btnDP').click(function(){
+            arrResumoFatura = [];
             arrResumoFatura.push($("#d_nome").val());
             arrResumoFatura.push(idade($("#d_datanasc").val(),new Date()));
-            // console.log(arrResumoFatura);
+            console.log(arrResumoFatura);
         });
 
 
         $('#btnDPF').click(function(){
-            $("#basedep").map(function(){
-                arrResumoFatura2.push(new Array($('input[name="nomed[]"]').val(),$('input[name="datanascd[]"]').val()));
-
+            arrResumoFatura2 = [];
+            $("#basedep .modal-body").map(function(){
+                arrResumoFatura2.push(
+                    new Array(
+                        $(this).find('input[name="nomed[]"]').val(),
+                        $(this).find('input[name="datanascd[]"]').val(),
+                        idade($(this).find('input[name="datanascd[]"]').val(),new Date())
+                    )
+                );
             });
+            console.log(arrResumoFatura2);
         });
-        console.log(arrResumoFatura);
-        console.log(arrResumoFatura2);
+        
+        // console.log(arrResumoFatura);
+        // console.log(arrResumoFatura2);
 
         $('.btnAdd').click(function(){
 
@@ -647,7 +659,7 @@
             $('#basedep .modal-body:last input:first').focus();
         });
 
-        calendario('.dateNasc');
+        // calendario('.dateNasc');
         // calendario('.dateNascd');
         listagem(".sel");
         listagem(".sel2");
@@ -666,6 +678,7 @@
         mascara('.numdnvd','00-00000000-0',false);
         mascara('.numero','0000000000',false);
         mascara('#el_dtnasc_1','00/00/0000',false);
+        mascara('.dateNasc','00/00/0000',false);
 
         function limpa_formulário_cep() {
             // Limpa valores do formulário de cep.
