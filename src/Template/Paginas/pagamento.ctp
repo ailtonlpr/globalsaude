@@ -6,10 +6,17 @@
     var priceTot = '492.96';
     var arrResumoFatura = [];
     var arrResumoFatura2 = [];
+    var totDep = 0;
 </script>
 
 <div class="container">
-    <div class="titAcima alert alert-success"><h3>Proposta de Adesão</h3></div>
+
+    <div class="titAcima alert alert-success">
+        <ul style="list-style:none">
+            <li style="display: inline-table;width: 37%;"><?= $this->Html->image('logo_simpec_sp.png',['height'=>40]) ?> <span>Global Saúde Consultoria</span></li>
+            <li style="display: inline-table;"><h3>Proposta de Adesão</h3></li>
+        </ul>
+    </div>
     <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step">
@@ -40,6 +47,7 @@
                               <div class="form-group">
                                 <label for="message-text" class="col-form-label">Nome Completo:</label>
                                 <div class='input-group'>
+                                  <?= $this->Form->hidden('_csrfToken',['value'=>$_csrfToken]) ?>
                                   <?= $this->Form->text('S_ADESAO_S_NOME',['class'=>'form-control nome','maxlength'=>'50','placeholder'=>'Nome Completo','id'=>'d_nome','required'=>'required']); ?>
                                   <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user"></span>
@@ -132,11 +140,11 @@
                                 <label for="message-text" class="col-form-label">Estado Civil:</label>
                                 <select required='required' name='S_ADESAO_S_ESTADOCIVIL' class="sel2 estadocivil" id="d_estadocivil">
                                   <option value="">&nbsp;</option>
-                                  <option value="1">Casado</option>
-                                  <option value="2">Divorciado</option>
-                                  <option value="3">Separado</option>
-                                  <option value="4">Solteiro</option> 
-                                  <option value="5">Viúvo</option>  
+                                  <option value="1">Casado(a)</option>
+                                  <option value="2">Divorciado(a)</option>
+                                  <option value="3">Separado(a)</option>
+                                  <option value="4">Solteiro(a)</option> 
+                                  <option value="5">Viúvo(a)</option>  
                                 </select>
                               </div>
                             </div>
@@ -420,7 +428,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="btn btn-primary nextBtn pull-right" type="button" >Avançar</button>
+                        <button id="btnIrPagto" class="btn btn-primary nextBtn pull-right" type="button" >Avançar</button>
                         <button style="margin-right: 10px" class="btn btn-primary previousBtn pull-right" type="button" >Anterior</button>
                     </div>
                 </div>
@@ -431,24 +439,69 @@
                 <div class="col-md-12">
                     <h3>Forma de Pagamento</h3>
                     <div class="modal-body">
-                        <div class='row'>
+                        <div class="row">
+                            <div>
+                                <h4>Leia o contrato.</h4>
+                                <?= $this->Html->link('<i class="fa fa-file-text-o" aria-hidden="true"></i> Contrato',
+                                'http://globalsaude.gted.com.br/Contrato.PDF',
+                                ['class'=>'btn btn-skin btn-lg','escape' => false, 'target' => '_blank']); ?>
+                                <br /><br />
+                                <h4>Aceita o contrato?</h4>
+                                <input type="radio" name="aceite" value="S"> SIM &nbsp;&nbsp; <input type="radio" name="aceite" value="N"> NÃO 
+                            </div>
+                        </div>
+                        <div class='row btnPagto'>
                             <div class="col-md-12">
                                 <div class='table-responsive'>
                                     <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
-                                    <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+                                    <!-- <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;"> -->
                                         <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                                        <input type="hidden" name="code" value="73AB01BE5C5C7AA004FEBFA8828B9E02" />
+                                        <!-- <input type="hidden" name="code" value="73AB01BE5C5C7AA004FEBFA8828B9E02" />
                                         <input type="hidden" name="iot" value="button" />
-                                        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/99x61-pagar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
-                                    </form>
-                                    <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+                                        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/99x61-pagar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /> -->
+                                    <!-- </form>
+                                    <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script> -->
                                     <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+                    
+                                    <!-- Declaração do formulário -->  
+                                    <form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html?transaction_id=E339E025DFDF4E3BB4E40F8AC989118C">  
+                                            <!-- Campos obrigatórios -->  
+                                            <input name="receiverEmail" type="hidden" value="apispe@gmail.com">  
+                                            <input name="currency" type="hidden" value="BRL">  
+                                      
+                                            <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
+                                            <input name="itemId1" type="hidden" value="0001">  
+                                            <input name="itemDescription1" type="hidden" value="PLANO SIGMA">  
+                                            <input name="itemAmount1" type="hidden" value="492.96">  
+                                            <input name="itemQuantity1" type="hidden" value="5">  
+                                      
+                                            <!-- Código de referência do pagamento no seu sistema (opcional) -->  
+                                            <input name="reference" type="hidden" value="REF1234">  
+                                              
+                                            <!-- Informações de frete (opcionais) -->  
+                                            <input name="shippingType" type="hidden" value="1">  
+                                            <input name="shippingAddressPostalCode" type="hidden" value="06824060">  
+                                            <input name="shippingAddressStreet" type="hidden" value="Rua Iguape">  
+                                            <input name="shippingAddressNumber" type="hidden" value="140">  
+                                            <input name="shippingAddressComplement" type="hidden" value="Casa 1">  
+                                            <input name="shippingAddressDistrict" type="hidden" value="Jardim Dom Jose">  
+                                            <input name="shippingAddressCity" type="hidden" value="Sao Paulo">  
+                                            <input name="shippingAddressState" type="hidden" value="SP">  
+                                            <input name="shippingAddressCountry" type="hidden" value="BRA">  
+                                      
+                                            <!-- submit do form (obrigatório) -->  
+                                            <input alt="Pague com PagSeguro" name="submit"  type="image"  
+                                    src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/>  
+                                              
+                                    </form> 
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="btn btn-success pull-right" type="submit">Concluir</button>
+                        <!-- <button class="btn btn-success pull-right" type="submit">Concluir</button> -->
                         <button style="margin-right: 10px" class="btn btn-primary previousBtn pull-right" type="button" >Anterior</button>
                     </div>
                 </div>
@@ -584,6 +637,10 @@
                 thousandsSeparator: '.'
             });
         });
+
+        $('#btnIrPagto').click(function(){
+            $('input[name="aceite"]').prop('checked', false);
+        });
         
         // console.log(arrResumoFatura);
         // console.log(arrResumoFatura2);
@@ -711,6 +768,76 @@
             }
         });
 
+        $('input[name="aceite"]').click(function(){
+            if($(this).val() == 'S'){
+
+                var arr = [];
+                var arrDados = { 'dadospessoal': {} }
+                $("#step-1 input, #step-1 select").map(function(i){
+                  arrDados['dadospessoal'][i]  =  { 'field':$(this).attr('name'),'valor':$(this).val() } 
+                });
+                arr.push(arrDados);
+
+                var arrContatos = { 'contatos': {} }
+                $("#step-2 input, #step-2 select").map(function(i){
+                  arrContatos['contatos'][i]  =  { 'field':$(this).attr('name'),'valor':$(this).val() } 
+                });
+                arr.push(arrContatos);
+
+                var arrDependentes = { 'dependentes': {} }
+                $("#step-3 input, #step-3 select").map(function(i){
+                  arrDependentes['dependentes'][i]  =  { 'field':$(this).attr('name'),'valor':$(this).val() } 
+                });
+                arr.push(arrDependentes);
+
+                // Informando o endereço
+                $('input[name="shippingAddressPostalCode"]').val($('input[name="S_ADESAO_I_CEP"]').val());
+                $('input[name="shippingAddressStreet"]').val($('input[name="S_ADESAO_S_ENDERECO"]').val());
+                $('input[name="shippingAddressNumber"]').val($('input[name="S_ADESAO_I_NUMERO"]').val());
+                $('input[name="shippingAddressComplement"]').val($('input[name="S_ADESAO_S_COMPLEMENTO"]').val());
+                $('input[name="shippingAddressDistrict"]').val($('input[name="S_ADESAO_S_CIDADE"]').val());
+                $('input[name="shippingAddressState"]').val($('input[name="S_ADESAO_S_UF"]').val());
+
+                var qtd = 1;
+                if(totDep > 0)
+                    qtd +=totDep;
+
+                $('input[name="itemQuantity1"]').val(qtd);
+
+                var arrAceite = { 'aceite': {} }
+                $("#step-5 input, #step-5 select").map(function(i){
+                  arrAceite['aceite'][i]  =  { 'field':$(this).attr('name'),'valor':$(this).val() } 
+                });
+                arr.push(arrAceite);
+
+               //console.log( JSON.stringify(arr) );
+                            
+                $.ajax({
+                  url : "http://localhost:8080/globalsaude/paginas/enviardados",
+                  type : 'post',
+                  data : JSON.stringify(arr),
+                  dataType : 'json',
+                  headers: {
+                      'X-CSRF-Token':$("#step-1 input[name='_csrfToken']").val(),
+                      'Content-Type':'application/json'
+                  },
+                  beforeSend : function(){
+                    console.log('Enviando...')
+                  }
+                })
+                .done(function(msg){
+                    // alert('fim');
+                })
+                .fail(function(jqXHR, textStatus, msg){
+                    console.log(msg);
+                }); 
+                $('.btnPagto').show();
+            }
+            else if($(this).val() == 'N')
+                $('.btnPagto').hide();
+
+        });
+
         // calendario('.dateNasc');
         // calendario('.dateNascd');
         listagem(".sel");
@@ -798,7 +925,9 @@
     </script>
     <style type="text/css">
 
-        .dpd { display: none; }
+        .dpd, .btnPagto { display: none; }
+
+        .btnPagto { margin-top: 25px; }
 
         .has-error span.select2-selection__rendered { 
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075);

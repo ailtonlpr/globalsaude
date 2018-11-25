@@ -62,8 +62,8 @@
                             <div class="price-bottom">
                               <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                             </div>
                           </div>
                         </div>
@@ -83,8 +83,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -99,8 +99,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -115,8 +115,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>   
@@ -131,8 +131,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -147,8 +147,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -163,8 +163,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -179,8 +179,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div> 
@@ -195,8 +195,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>
@@ -211,8 +211,8 @@
 
                   <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                  
                 </div>
               </div>  
@@ -227,8 +227,8 @@
                         <div class="price-bottom">
                           <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?></div>
                         </div>
                       </div>
                     </div>
@@ -291,8 +291,8 @@
                 </ul>
                 <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]); ?>
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]); ?>
                 </div>
               </div>
             </div>
@@ -469,7 +469,7 @@
               <div class="cl_d"><h5 class="titBenef">Opção de Reembolso</h5></div>
             </li>
             <li>
-              <div class="cl_e"><i class="fa fa-user-circle-o fa-3x"></i></div>
+              <div class="cl_e"><i class="fa fa-user fa-3x"></i></div>
               <div class="cl_d"><h5 class="titBenef">Crianças até 35 meses e 29 dias não pagam</h5></div>
             </li>
             <li>
@@ -477,7 +477,7 @@
               <div class="cl_d"><h5 class="titBenef">Instalação de Aparelho Ortodôntico</h5></div>
             </li>
             <li>
-              <div class="cl_e"><i class="fa fa-id-card-o fa-3x"></i></div>
+              <div class="cl_e"><i class="fa fa-money fa-3x"></i></div>
               <div class="cl_d"><h5 class="titBenef">Vidalink (Descontos em Farmácias)</h5></div>
             </li>
           </ul>
@@ -657,8 +657,8 @@
               <div class="price-bottom">
                 <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
-                    '#',
-                    ['data-toggle'=>'modal','data-target'=>'#myModalProposta','class'=>'btn btn-skin btn-lg','escape' => false]);
+                    '/pagamento',
+                    ['class'=>'btn btn-skin btn-lg','escape' => false]);
                 ?></div>
                
               </div>

@@ -139,7 +139,7 @@ class PaginasController extends AppController
     {
 
         $this->viewBuilder()->setLayout('ajax');
-        //$this->render(false);
+        $this->render(false);
 
         if($this->request->is('post')){
 
@@ -157,7 +157,7 @@ class PaginasController extends AppController
                 );
                 $this->set('sucessocotar','ok');
             } else {
-                debug($outro->getErrors()); die;
+                // debug($outro->getErrors()); die;
                 $this->set('erros',$outro->getErrors());
                 $this->Flash->cotar(
                     __('Não foi possível adicionar o registro'),
@@ -171,6 +171,7 @@ class PaginasController extends AppController
     public function pagamento()
     {
         $this->viewBuilder()->setLayout('defaultpagto');
+        $this->set('_csrfToken',$this->request->getParam('_csrfToken'));
     }
 
     public function teste()
