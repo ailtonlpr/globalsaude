@@ -549,6 +549,11 @@
 
             console.log(totDep);
             
+            var obj = $('input[name="add_dpd"]')[1];
+            if($(obj).is(':checked')){
+                totDep -= 1;
+            }
+            
             for(i=0;i<totDep; i++)
             {
                 var tag = '';
@@ -690,17 +695,17 @@
                 $('.dpd').show();
                 $("input[name='nomed[]']").attr('required','required');
                 $("input[name='datanascd[]']").attr('required','required');
-                $("input[name='sexod[]']").attr('required','required');
-                $("input[name='estadocivild[]']").attr('required','required');
-                $("input[name='grauparentescod[]']").attr('required','required');
+                $("select[name='sexod[]']").attr('required','required');
+                $("select[name='estadocivild[]']").attr('required','required');
+                $("select[name='grauparentescod[]']").attr('required','required');
                 $("input[name='nomemaed[]']").attr('required','required');               
             } 
             else if ($(this).val() == 'N'){
                 $("input[name='nomed[]']").removeAttr('required');
                 $("input[name='datanascd[]']").removeAttr('required');
-                $("input[name='sexod[]']").removeAttr('required');
-                $("input[name='estadocivild[]']").removeAttr('required');
-                $("input[name='grauparentescod[]']").removeAttr('required');
+                $("select[name='sexod[]']").removeAttr('required');
+                $("select[name='estadocivild[]']").removeAttr('required');
+                $("select[name='grauparentescod[]']").removeAttr('required');
                 $("input[name='nomemaed[]']").removeAttr('required'); 
                 $('.dpd').hide();
             }
