@@ -67,9 +67,39 @@ $.fn.wizard = function(config) {
         return;
       };
 
-      if(step == 1)
+
+      if(step == 3)
       {
+        var arrDados = [];
+        $("#frmContratar input, #frmContratar select").map(function(){
+          // console.log($("#frmContratar input[name='_csrfToken']").val());
+          arrDados.push(new Array($(this).attr('name'),$(this).val()));
+        });
+        console.log(arrDados);
         
+        
+        $.ajax({
+          url : "http://localhost:8080/globalsaude/paginas/enviardados",
+          type : 'post',
+          data : JSON.stringify(arrDados),
+          dataType : 'json',
+          headers: {
+              'X-CSRF-Token':$("#frmContratar input[name='_csrfToken']").val(),
+              'Content-Type':'application/json'
+          },
+          beforeSend : function(){
+            console.log('enviando...')
+          }
+        })
+        .done(function(msg){
+            alert('fim');
+        })
+        .fail(function(jqXHR, textStatus, msg){
+            alert(msg);
+        }); 
+
+        alert('aki');
+        return false;
 
 
       }

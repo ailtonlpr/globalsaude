@@ -47,4 +47,9 @@ class PaginasFuncoesHelper extends Helper
         return (!empty($data)) ? '('.substr($data,0,2).') '.substr($data,2,4).'-'.substr($data, 6,4) : '';
     }
 
+    public function getStatusRegistro($dados)
+    {
+        return ($dados == 1) ? 'Ativo' : 'Inativo';
+    }
+
 }

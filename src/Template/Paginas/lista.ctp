@@ -31,7 +31,7 @@
                 <td><?= $this->PaginasFuncoes->mascaraFoneFixo($cotaco->S_COTACAO_I_NUMERO_FIXO) ?></td>
                 <td><?= h($cotaco->S_COTACAO_C_HORARIO_CONTATO) ?></td>
                 <td><?= h($cotaco->S_COTACAO_D_DATAINCLUSAO->format('d/m/Y H:i:s')) ?></td>
-                <td><?= $this->Number->format($cotaco->S_COTACAO_I_ATIVO) ?></td>
+                <td><?= $this->PaginasFuncoes->getStatusRegistro($this->Number->format($cotaco->S_COTACAO_I_ATIVO)) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

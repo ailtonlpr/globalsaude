@@ -23,6 +23,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\ORM\TableRegistry;
+use Cake\Validation\Validator;
 
 
 
@@ -52,9 +53,28 @@ class PaginasController extends AppController
     public function lista()
     {
     	$this->Cotacoes = TableRegistry::get('Cotacoes');
+
     	$cotacoes = $this->paginate($this->Cotacoes);
 
         $this->set(compact('cotacoes'));
+    }
+
+    public function adesao()
+    {
+        $this->Outros = TableRegistry::get('Outros');
+
+        $outros = $this->paginate($this->Outros);
+
+        foreach ($outros as $k => $v) {
+            //debug(json_decode($v->S_OUTRO_S_DADOS));
+            $dados[$k]['ID'] = json_decode($v->S_OUTRO_I_ID);
+            $dados[$k]['CRIADO'] = $v->S_OUTRO_D_DATAINCLUSAO->format('d-m-Y h:i:s');
+            $dados[$k]['DADOS'] = json_decode($v->S_OUTRO_S_DADOS);
+            //debug($d[$k]['DADOS'][0]->{"dadospessoal"}[1]->{"field"});
+            debug($dados);
+        } 
+        die;
+        $this->set(compact('dados'));
     }
 
     public function index()
@@ -131,5 +151,66 @@ class PaginasController extends AppController
         
         // $this->set('tipo_usuarios',$tipo_usuarios);
         // $this->set('cotacao', $cotacao);
+    }
+
+    public function enviardados()
+    {
+
+        $this->viewBuilder()->setLayout('ajax');
+        $this->render(false);
+
+        if($this->request->is('post')){
+
+
+            $data['S_OUTRO_S_DADOS'] = json_encode($this->request->data);
+
+            $outros = TableRegistry::get('Outros');
+            $outro = $outros->newEntity();
+            $outro = $outros->patchEntity($outro, $data);   
+
+            if($outros->save($outro)){
+                $this->Flash->sucesso(
+                    __('Solicitação de cotação cadastrada com sucesso. Em breve faremos contato.'),
+                    ['key'=> 'cotarsucesso']
+                );
+                $this->set('sucessocotar','ok');
+            } else {
+                // debug($outro->getErrors()); die;
+                $this->set('erros',$outro->getErrors());
+                $this->Flash->cotar(
+                    __('Não foi possível adicionar o registro'),
+                    ['key' => 'cotar']
+                );
+            }
+        }
+    }
+
+
+    public function pagamento()
+    {
+        $this->viewBuilder()->setLayout('defaultpagto');
+        $this->set('_csrfToken',$this->request->getParam('_csrfToken'));
+    }
+
+    public function teste()
+    {
+        $this->viewBuilder()->setLayout('defaultpagto');
+    }
+
+    public function getTempoVida($dt_nascimento = null){
+      
+      if(is_null($dt_nascimento)){
+        return false;
+      } 
+
+      $dt_nascimento = $dt_nascimento->format('Y-m-d');
+
+      $agora = date('Y-m-d');
+      $data_atual    = new \DateTime($agora);
+      $data_anterior = new \DateTime($dt_nascimento);
+      $calculo       = $data_atual->diff($data_anterior);
+
+      // return "{$calculo->y} ".__('anos').", {$calculo->m} ".__('meses')." ".__('e')." {$calculo->d} ".__('dias')."";
+      return "{$calculo->y} ".__('anos').", {$calculo->m} ".__('meses')." ".__('e')." {$calculo->d} ".__('dias')."";
     }
 }
