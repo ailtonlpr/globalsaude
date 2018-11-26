@@ -62,7 +62,6 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Paginas', 'action' => 'index']);
     $routes->connect('/pagamento', ['controller' => 'Paginas', 'action' => 'pagamento']);
     $routes->connect('/lista', ['controller' => 'Paginas', 'action' => 'lista']);
-    $routes->connect('/adesao', ['controller' => 'Paginas', 'action' => 'adesao']);
     $routes->connect('/teste', ['controller' => 'Paginas', 'action' => 'teste']);
 
     /**

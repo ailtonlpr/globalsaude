@@ -59,6 +59,24 @@ class PaginasController extends AppController
         $this->set(compact('cotacoes'));
     }
 
+    public function adesao()
+    {
+        $this->Outros = TableRegistry::get('Outros');
+
+        $outros = $this->paginate($this->Outros);
+
+        foreach ($outros as $k => $v) {
+            //debug(json_decode($v->S_OUTRO_S_DADOS));
+            $dados[$k]['ID'] = json_decode($v->S_OUTRO_I_ID);
+            $dados[$k]['CRIADO'] = $v->S_OUTRO_D_DATAINCLUSAO->format('d-m-Y h:i:s');
+            $dados[$k]['DADOS'] = json_decode($v->S_OUTRO_S_DADOS);
+            //debug($d[$k]['DADOS'][0]->{"dadospessoal"}[1]->{"field"});
+            debug($dados);
+        } 
+        die;
+        $this->set(compact('dados'));
+    }
+
     public function index()
     {   
     	$this->set('_csrfToken',$this->request->getParam('_csrfToken'));
