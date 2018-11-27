@@ -162,7 +162,7 @@ class PaginasController extends AppController
         if($this->request->is('post')){
 
 
-            $data['S_OUTRO_S_DADOS'] = json_encode($this->request->data);
+            $data['S_OUTRO_S_DADOS'] = json_encode($this->request->getData());
 
             $outros = TableRegistry::get('Outros');
             $outro = $outros->newEntity();
@@ -174,6 +174,8 @@ class PaginasController extends AppController
                     ['key'=> 'cotarsucesso']
                 );
                 $this->set('sucessocotar','ok');
+                $arr = ['success'=>'ok'];
+                echo json_encode($arr);
             } else {
                 // debug($outro->getErrors()); die;
                 $this->set('erros',$outro->getErrors());
