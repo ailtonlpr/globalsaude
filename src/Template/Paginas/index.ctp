@@ -58,7 +58,7 @@
                         <div class="col-sm-12 pricing-box featured-price">
                           <div class="pricing-content featured ajtprc">
                             <h2>Plano SIGMA</h2>
-                            <h3>R$ 37<sup>,92</sup> <span>/ por mês</span></h3>
+                            <h3>R$ 41<sup>,08</sup> <span>/ por mês</span></h3>
                             <div class="price-bottom">
                               <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
@@ -223,7 +223,7 @@
                     <div class="wow bounceInUp" data-wow-delay="0.3s">
                       <div class="pricing-content featured">
                         <h2>Plano SIGMA</h2>
-                        <h3>R$ 37<sup>,92</sup> <span>/ por pessoa</span></h3>
+                        <h3>R$ 41<sup>,08</sup> <span>/ por pessoa</span></h3>
                         <div class="price-bottom">
                           <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',

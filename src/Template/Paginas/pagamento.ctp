@@ -453,31 +453,19 @@
                         <div class='row btnPagto'>
                             <div class="col-md-12">
                                 <div class='table-responsive'>
-                                    <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
-                                    <!-- <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;"> -->
-                                        <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                                        <!-- <input type="hidden" name="code" value="73AB01BE5C5C7AA004FEBFA8828B9E02" />
-                                        <input type="hidden" name="iot" value="button" />
-                                        <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/99x61-pagar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /> -->
-                                    <!-- </form>
-                                    <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script> -->
-                                    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
-                    
+                                                        
                                     <!-- Declaração do formulário -->  
                                     <form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html?transaction_id=E339E025DFDF4E3BB4E40F8AC989118C">  
                                             <!-- Campos obrigatórios -->  
                                             <input name="receiverEmail" type="hidden" value="apispe@gmail.com">  
                                             <input name="currency" type="hidden" value="BRL">  
-                                      
                                             <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
                                             <input name="itemId1" type="hidden" value="0001">  
                                             <input name="itemDescription1" type="hidden" value="PLANO SIGMA">  
                                             <input name="itemAmount1" type="hidden" value="492.96">  
                                             <input name="itemQuantity1" type="hidden" value="5">  
-                                      
                                             <!-- Código de referência do pagamento no seu sistema (opcional) -->  
                                             <input name="reference" type="hidden" value="REF1234">  
-                                              
                                             <!-- Informações de frete (opcionais) -->  
                                             <input name="shippingType" type="hidden" value="1">  
                                             <input name="shippingAddressPostalCode" type="hidden" value="06824060">  
@@ -488,14 +476,10 @@
                                             <input name="shippingAddressCity" type="hidden" value="Sao Paulo">  
                                             <input name="shippingAddressState" type="hidden" value="SP">  
                                             <input name="shippingAddressCountry" type="hidden" value="BRA">  
-                                      
                                             <!-- submit do form (obrigatório) -->  
                                             <input alt="Pague com PagSeguro" name="submit"  type="image"  
                                     src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif"/>  
-                                              
                                     </form> 
-
-
                                 </div>
                             </div>
                         </div>
@@ -727,16 +711,10 @@
             newidte = elmprox+numprox;            
             $('.dpd:last .date input:first').attr('id',newidte);
 
-
-            //calendario('#'+d_ant_0);
-            //calendario('#'+newidte);
-            // calendario('.dateNasc');
-            // calendario('.dateNascd');
             listagem(".sel");
             listagem(".sel2");
             $('#'+s_ant_3).mask('00/00/0000', {reverse: false});
-            $('#'+newidte).mask('00/00/0000', {reverse: false});
-            
+            $('#'+newidte).mask('00/00/0000', {reverse: false});            
         });
 
         $('.btnDel').click(function(){
@@ -810,36 +788,39 @@
                 });
                 arr.push(arrAceite);
 
-               //console.log( JSON.stringify(arr) );
-                            
                 $.ajax({
-                  url : "http://localhost:8080/globalsaude/paginas/enviardados",
-                  type : 'post',
-                  data : JSON.stringify(arr),
-                  dataType : 'json',
-                  headers: {
+                    url : "https://globalsaude.gted.com.br/paginas/enviardados",
+                    type : 'post',
+                    data : JSON.stringify(arr),
+                    dataType : 'json',
+                    headers: {
                       'X-CSRF-Token':$("#step-1 input[name='_csrfToken']").val(),
                       'Content-Type':'application/json'
-                  },
-                  beforeSend : function(){
-                    console.log('Enviando...')
-                  }
+                    },
+                    beforeSend : function(){
+                        console.log('Enviando...');
+                        // $('body').block({ message: null });
+                        $('#loadProcess').css({display:"block"});
+                    }
                 })
                 .done(function(msg){
-                    // alert('fim');
+                    alertify.alert("Contrato processado com sucesso.");
+                    $.unblockUI();
+                    $('#loadProcess').css({display:"none"});
+                    $('.btnPagto').show();
                 })
                 .fail(function(jqXHR, textStatus, msg){
                     console.log(msg);
+                    $.unblockUI();
+                    $('#loadProcess').css({display:"none"});
+                    alertify.alert("Não foi possível fazer o processamento do contrato. Tente novamente.");
                 }); 
-                $('.btnPagto').show();
             }
             else if($(this).val() == 'N')
                 $('.btnPagto').hide();
 
         });
 
-        // calendario('.dateNasc');
-        // calendario('.dateNascd');
         listagem(".sel");
         listagem(".sel2");
 
@@ -925,6 +906,17 @@
     </script>
     <style type="text/css">
 
+        #loadProcess {
+            display: none;
+            /* margin: 0 auto; */
+            padding: 10px 0;
+            width: 160px;
+            top: 50%;
+            position: absolute;
+            left: 50%;
+            z-index: 99999;
+        }
+
         .dpd, .btnPagto { display: none; }
 
         .btnPagto { margin-top: 25px; }
@@ -956,3 +948,4 @@
             z-index: 10000;
         }
     </style>
+    <div id="loadProcess"><?= $this->Html->image('loading.gif',['width'=>'64px','height'=>'64px']);?></div>
