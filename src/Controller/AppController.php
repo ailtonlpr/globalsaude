@@ -54,4 +54,13 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+
+     public function beforeFilter(Event $event){
+        parent::beforeFilter($event);
+
+        if (!$this->request->is('ssl')){
+            $schema = 'https://';
+            $this->redirect( $schema . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+        }
+    }
 }

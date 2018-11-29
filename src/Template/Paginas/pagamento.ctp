@@ -7,6 +7,12 @@
     var arrResumoFatura = [];
     var arrResumoFatura2 = [];
     var totDep = 0;
+
+    var newURL = 
+    window.location.protocol + "//" + 
+    window.location.host + "/"+"paginas/enviardados";
+
+
 </script>
 
 <div class="container">
@@ -443,7 +449,7 @@
                             <div>
                                 <h4>Leia o contrato.</h4>
                                 <?= $this->Html->link('<i class="fa fa-file-text-o" aria-hidden="true"></i> Contrato',
-                                'http://globalsaude.gted.com.br/Contrato.PDF',
+                                'https://globalsaude.gted.com.br/Contrato.PDF',
                                 ['class'=>'btn btn-skin btn-lg','escape' => false, 'target' => '_blank']); ?>
                                 <br /><br />
                                 <h4>Aceita o contrato?</h4>
@@ -789,7 +795,7 @@
                 arr.push(arrAceite);
 
                 $.ajax({
-                    url : "https://globalsaude.gted.com.br/paginas/enviardados",
+                    url : newURL,
                     type : 'post',
                     data : JSON.stringify(arr),
                     dataType : 'json',
@@ -801,7 +807,8 @@
                         console.log('Enviando...');
                         // $('body').block({ message: null });
                         $('#loadProcess').css({display:"block"});
-                    }
+                    },
+                    
                 })
                 .done(function(msg){
                     alertify.alert("Contrato processado com sucesso.");

@@ -19,7 +19,7 @@
         </button>
         <?= $this->Html->link(
           $this->Html->image('logo_simpec_sp.png',['height'=>40]).
-          $this->Html->image('logo+caixa+seguradora.png',['height'=>40]),
+          $this->Html->image('Caixa-Seguradora_Logo.jpg',['height'=>40]),
           ['controller'=>'paginas','action'=>'index'],
           ['escape'=>false,'class'=>'navbar-brand']
           ); 
@@ -653,7 +653,7 @@
           <div class="wow bounceInUp" data-wow-delay="0.3s">
             <div class="pricing-content featured">
               <h2>Plano SIGMA</h2>
-              <h3>R$ 37<sup>,92</sup> <span>/ por pessoa</span></h3>
+              <h3>R$ 41<sup>,08</sup> <span>/ por pessoa</span></h3>
               <div class="price-bottom">
                 <div class="btn-contrata"><?= $this->Html->link(
                     '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Contratar',
@@ -801,4 +801,4 @@
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
-<?= $this->element('contratar'); ?>
+<? // echo $this->element('contratar'); ?>
